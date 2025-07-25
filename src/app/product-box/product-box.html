@@ -1,0 +1,37 @@
+<br>
+<div class="container">
+  <div class="row">
+    @for(product of product; track product.id){
+    <div class="col-sm-6 col-md-3 mb-4">
+      <div class="card">
+      <div class="product-grid4">
+        <div class="product-image4">
+          <a href="#">
+            <img
+              class="pic-1"
+              [src]="product.img"
+            />
+            <img
+              class="pic-2"
+              [src]="product.img"
+            />
+          </a>
+        </div>
+        <div class="product-content">
+          <h3 class="title"><a href="#"
+          >{{product.name}}</a></h3>
+          <div class="price">
+            {{ product.price | currency  }}
+          </div>
+          <div class="price2">
+            {{ product.price | khmerCurrency }}
+          </div>
+          <a class="add-to-cart" href="">ADD TO CART</a>
+        </div>
+      </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
+
