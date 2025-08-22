@@ -1,0 +1,79 @@
+<div class="container my-5">
+  <h3 class="mb-4">Shopping Cart</h3>
+
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+      <tr>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+
+        @for (item of cartService.getItem(); track item.id){
+          <tr>
+            <td>
+              <img
+              [src]="item.imageUrl"
+              class="cart-img"
+              [alt]="item.imageurl"
+              onerror="this.src='/assets/No_Image_Available.jpg';">
+
+            </td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price | currency}}
+<!--              {{ item.price | khmerCurrency}}--></td>
+
+            <td>
+              <input type="button" class="btn btn-sm btn-outline-secondary" value="+" (click)="increaseQty(item)">
+              {{ item.qty | number }}
+              <input type="button" class="btn btn-sm btn-outline-secondary" value="-" (click)="decreaseQty(item)">
+            </td>
+            <td>
+              {{ (item.price * item.qty) | currency}}
+            </td>
+            <td>
+              <button
+                (click)="removeItem(item)"
+                class="btn btn-sm remove-btn">
+              Remove
+            </button></td>
+          </tr>
+        }
+      <tr>
+        <td colspan="4" class="text-right font-weight-bold">Grand Total:</td>
+        <td class="font-weight-bold">{{ cartService.getTotal() | currency }}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="4" class="text-right font-weight-bold">Grand Total KHR:</td>
+        <td class="font-weight-bold">{{ cartService.getTotal() | khmerCurrency }}</td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-right">
+    <button class="btn btn-success" routerLink="/checkout">
+      Checkout</button>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

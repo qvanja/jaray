@@ -17,7 +17,6 @@ export class KhmerCurrencyPipe implements PipeTransform {
       maximumFractionDigits: decimals
     }).format(converted) + ' KHR';
   }
-
 }
 
 

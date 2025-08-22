@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {CurrencyPipe, JsonPipe} from '@angular/common';
 import {KhmerCurrencyPipe} from '../khmer-currency-pipe';
 
@@ -10,11 +10,17 @@ import {KhmerCurrencyPipe} from '../khmer-currency-pipe';
     RouterOutlet,
     JsonPipe,
     CurrencyPipe,
-    KhmerCurrencyPipe
+    KhmerCurrencyPipe,
+    RouterLink,
+
   ],
   templateUrl: './product-box.html',
   styleUrl: './product-box.css'
 })
 export class ProductBox {
   @Input() product : any = [];
+  @Output() addToCart : any  = new EventEmitter<any>();
+  onAddToCart (product: any) {
+    return this.addToCart.emit(product);
+  }
 }

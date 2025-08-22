@@ -1,21 +1,22 @@
 <br>
-<div class="container">
-  <div class="row">
-    @for(product of product; track product.id){
-    <div class="col-sm-6 col-md-3 mb-4">
+
       <div class="card">
       <div class="product-grid4">
         <div class="product-image4">
-          <a href="#">
-            <img
+          <a [routerLink]="['/products-detail']"
+          [queryParams]="{product_id: product.id}">
+            <div style="cursor: pointer" ><img
               class="pic-1"
-              [src]="product.img"
+              [src]="product.imageUrl"
+              onerror="this.src='/assets/No_Image_Available.jpg';"
             />
-            <img
-              class="pic-2"
-              [src]="product.img"
-            />
+              <img
+                class="pic-2"
+                [src]="product.imageUrl"
+                onerror="this.src='/assets/No_Image_Available.jpg';"
+              /></div>
           </a>
+
         </div>
         <div class="product-content">
           <h3 class="title"><a href="#"
@@ -26,12 +27,9 @@
           <div class="price2">
             {{ product.price | khmerCurrency }}
           </div>
-          <a class="add-to-cart" href="">ADD TO CART</a>
+          <a class="add-to-cart" (click)="onAddToCart(product)">ADD TO CART</a>
         </div>
       </div>
       </div>
-    </div>
-    }
-  </div>
-</div>
+
 

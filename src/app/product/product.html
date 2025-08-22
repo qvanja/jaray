@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    @for (product of products.getproduct(); track product.id) {
+      <div class="col-6 col-md-3 mb-4">
+        <app-product-box
+          [product]="product"
+          (addToCart)="onAddToCart($event)">
+        </app-product-box>
+      </div>
+    }
+  </div>
+</div>
